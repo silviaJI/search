@@ -1,0 +1,61 @@
+package com.mobile.api.proto;
+option java_outer_classname = "MAppLibrary";
+
+message MBookList {
+	repeated MBook news = 1; //书籍列表
+	optional int32 cnt = 2; //总数
+	optional bytes img = 3; //验证码 若存在则需要填写完验证码再重新登录
+}
+
+message MBook {
+	optional string id = 1; //id
+	optional string title = 2; //标题
+	optional string author = 3; //作者
+	optional string publish = 4; //出版社
+	optional int32 total = 5; //馆藏
+	optional int32 canBorrow = 6; //可借
+	optional string borrowTime = 7; //借阅时间
+	optional string backTime = 8; //归还时间
+	repeated MBookDetail details = 9; //明细列表
+}
+
+message MBookDetail{
+	optional string num = 1; //索书号
+	optional string code = 2; //条形码
+	optional string address = 3; //馆藏地
+	optional string state = 4; //图书状态
+}
+
+/**
+@api MSearchBook MSearchBook	// 图书馆检索(分页)  /mobile?methodno=MSearchBook&debug=1&userid=&verify=&deviceid=&appid=&page=&limit=&keyword=
+@param required string keyword //关键字
+@return MBookList 
+*/
+
+/**
+@api MBookDetail MBookDetail	// 图书详情查询  /mobile?methodno=MBookDetail&debug=1&userid=&verify=&deviceid=&appid=&id=
+@param required string id //url
+@return MBook 
+*/
+
+/**
+@api MMyLibrary MMyLibrary	// 个人图书馆(分页) mobile?methodno=MMyLibrary&debug=1&userid=&verify=&deviceid=&appid=&account=&password=
+@param required string account //account
+@param required string password //password
+@return MBookList  
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

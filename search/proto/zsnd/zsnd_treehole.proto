@@ -1,0 +1,65 @@
+package com.mobile.api.proto;
+option java_outer_classname = "MAppTreeHole";
+
+message MTreeHole {
+	repeated MTopic topics = 1; //列表
+	optional int32 newsCnt = 2; //总数
+}
+
+message MTopic {
+	optional string id = 1; //id
+	optional string title = 2; //标题
+	optional string content = 3; //内容
+	optional string time = 4; //时间
+	optional string imgs = 5; //组图
+	optional int32 praiseCnt = 6; //赞总数
+	optional int32 commentCnt = 7; //评论总数
+	optional int32 hasPraise = 8; //是否已经赞
+	repeated MComment comment = 9; //评论列表
+	optional string createTime = 10; //创建时间
+	optional string author = 11; //树洞作者
+}
+
+message MComment {
+	optional string id = 1; //id
+	optional string userid1 = 2; //回帖人id
+	optional string nickname1 = 3; //回帖人
+	optional string userid2 = 4; //被回复人id
+	optional string nickname2 = 5; //被回复人
+	optional string content = 6; //内容
+	optional string time = 7; //时间
+	optional string pid = 8; //树洞id
+	optional string title = 9; //树洞标题
+	optional string author = 10; //树洞作者
+}
+
+message MNewComments {
+	repeated MComment news = 1; //列表
+	optional int32 cnt = 2; //总数
+}
+
+message MAddTopic {
+	optional string title = 1; //标题
+	optional string content = 2; //内容
+	repeated bytes imgs = 3;
+}
+
+/**
+@api MTreeHoleList MTreeHoleList	// 树洞首页 /mobile?methodno=MTreeHoleList&debug=1&deviceid=1&appid=1&userid=1&verify=1&type=0&begin=
+@param required number type //0:首页 1:我的树洞
+@param required string begin //开始时间
+@return MTreeHole 
+*/
+
+/**
+@api MTreeHoleNews MTreeHoleNews	// 树洞新消息 /mobile?methodno=MTreeHoleNews&debug=1&deviceid=1&appid=1&userid=1&verify=1&begin=
+@param required string begin //开始时间
+@return MNewComments
+*/
+
+/**
+@api MTreeHole MTreeHole	// 树洞详情 /mobile?methodno=MTreeHole&debug=1&deviceid=1&appid=1&userid=1&verify=1&id=1
+@param required string id //话题id
+@return MTopic
+*/
+

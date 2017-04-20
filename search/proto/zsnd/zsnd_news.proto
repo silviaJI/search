@@ -1,0 +1,74 @@
+package com.mobile.api.proto;
+option java_outer_classname = "MAppNews";
+
+message MNewsList {
+	repeated MNews news = 1; //新闻列表
+}
+
+message MNews {
+	optional string id = 1; //id
+	optional string img = 2; //图
+	optional string source = 3; //来源
+	optional string title = 4; //标题
+	optional string content = 5; //描述
+	optional string time = 6; //时间
+	optional string url = 7; //正文url
+	optional string author = 8; //作者
+	optional int32 comment = 9; //评论数
+}
+
+message MRssList {
+	repeated MRss list = 1; //订阅列表
+}
+
+message MRss {
+	optional string id = 1; //id
+	optional string img = 2; //图
+	optional string title = 3; //标题
+	optional string content = 4; //描述
+	optional int32 state = 5; //是否订阅 1:是
+}
+
+message MMyRssList {
+	repeated MMyRss list = 1; //我的订阅列表
+}
+
+message MMyRss {
+	optional string id = 1; //id
+	optional string title = 2; //标题
+	repeated MNews news = 3; //新闻列表
+}
+
+/**
+@api MNewsList MNewsList	//新闻列表(分页) /mobile?methodno=MNewsList&debug=1&deviceid=1&userid=fe34a40e-eac6-11e3-b696-ac853d9d52b1&verify=cf09a009-d221-466a-b9f0-d7d3b43dce7c&page=2&limit=10&appid=nju
+@return MNewsList 
+*/
+
+/**
+@api MNews MNews	// 新闻详情
+@param required string id //id
+@return MNews
+*/
+
+/**
+@api MBaiheNewsList MBaiheNewsList	// 百合十大 /mobile?methodno=MBaiheNewsList&debug=1&deviceid=1&userid=fe34a40e-eac6-11e3-b696-ac853d9d52b1&verify=cf09a009-d221-466a-b9f0-d7d3b43dce7c&appid=nju
+@return MNewsList 
+*/
+
+/**
+@api MAllRss MAllRss	// 全部订阅 /mobile?methodno=MAllRss&debug=1&deviceid=1&userid=&verify=&appid=
+@return MRssList 
+*/
+
+/**
+@api MMyRss MMyRss	// 我的订阅 /mobile?methodno=MMyRss&debug=1&deviceid=1&userid=&verify=&appid=
+@return MMyRssList 
+*/
+
+/**
+@api MActivity MActivity	// 活动  /mobile?methodno=MNewsList&debug=1&deviceid=1&userid=fe34a40e-eac6-11e3-b696-ac853d9d52b1&verify=cf09a009-d221-466a-b9f0-d7d3b43dce7c&page=2&limit=10&appid=nju
+@return MNewsList  
+*/
+
+
+

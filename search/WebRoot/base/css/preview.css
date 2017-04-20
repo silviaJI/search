@@ -1,0 +1,11 @@
+#pre-content{width:90%; margin:20px auto;}
+table {width:96%; font:normal 12px "Microsoft Yahei"; color:#111;margin:0 0 0  2%;border:none;}
+table td{height:30px; line-height:30px;border:1px solid #000; text-align:center;font-size:12px;}
+table td.title{font-weight:bold;font-size:15px;height:30px; line-height:30px;border-top:none;text-align:left;padding:0 0 0 20px;}
+table td.titleT{font-weight:bold;height:50px; line-height:50px;}
+table td.titleT .titleMain{font-size:30px;}
+table td.titleT .titlePhone{font-size:18px;}
+.WordSection{layout-grid:15.6px;width:90%; margin:30px auto;padding:0 20px; margin-bottom:none;}
+.WordSection p.MsoNormal{line-height:18px;font-size:8px;font-weight:normal;}
+.WordSection p.MsoNormal .font-bold{font-weight:bold;font:bolder 8px "Microsoft Yahei";}
+.WordSection p.MsoNormal .con-title{font:bolder 18px "Microsoft Yahei";}

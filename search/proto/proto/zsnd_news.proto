@@ -1,0 +1,39 @@
+package com.mobile.api.proto;
+option java_outer_classname = "MAppNews";
+
+message MNewsList {
+	repeated MNews news = 1; //新闻列表
+	optional string next = 2;
+}
+
+message MNews {
+	optional string id = 1; //id
+	optional string img = 2; //图
+	optional string noteId = 3; //来源
+	optional string title = 4; //标题
+	optional string desc = 5; //描述
+	optional string time = 6; //时间
+	optional string url = 7; //正文url
+	optional int32 type = 8;
+	optional string source = 9;
+	optional int32 browseCount = 10;
+	optional int32 praiseCount = 11;
+	optional int32 commentCount = 12;
+	optional int32 showType = 13;
+	optional int32 isCollected = 14;
+	optional int32 isPraised = 15;
+}
+
+/**
+@api MIndex MIndex	//首页 /mobile?methodno=MIndex&debug=1&deviceid=1&userid=fe34a40e-eac6-11e3-b696-ac853d9d52b1&verify=cf09a009-d221-466a-b9f0-d7d3b43dce7c&appid=nju&appid=nju
+@return MIndex
+*/
+
+/**
+@api MUnreadModule MUnreadModule	// 未读消息  /mobile?methodno=MUnreadModule&debug=1&deviceid=1&userid=dffeda04-eb07-11e3-b696-ac853d9d52b1&verify=753bd4cd-590a-4fa2-b5b3-f390d3bc1d01&appid=nju
+@return MUnread
+*/
+
+
+
+

@@ -1,0 +1,7 @@
+﻿[
+	{ id: "1", text: "后台管理系统", iconCls: "icon-tip"},
+	{ id: "2", text: "系统相关", pid:"1"},
+	{ id: "21", pid: "2", text: "题目管理", url: "showlistQuestion.do", iconPosition: "top"},
+	{ id: "22", pid: "2", text: "用户管理", url: "showlistUser.do", iconPosition: "top"},
+	{ id: "23", pid: "2", text: "复赛批阅", url: "showlistAnswer.do", iconPosition: "top"}
+]

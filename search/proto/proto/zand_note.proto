@@ -1,0 +1,118 @@
+package com.mobile.api.proto;
+option java_outer_classname = "MAppNote";
+import "zsnd_qusetion.proto";
+
+message MNoteBookList {
+	optional string ad_url = 2;
+    optional string ad_title = 3;
+    optional string ad_image = 4;
+    optional string next = 5;
+	repeated MNoteBookDetail notes = 1; //列表
+}
+
+message MNoteBookDetail{
+	repeated MNoteBook books = 1; //列表
+	optional string next = 3;
+	optional string title = 2;
+}
+
+message MNoteBook {
+	optional string id = 1; //id
+	optional string subId = 15;
+	optional string authorId = 2;  //用户id
+	optional string authorName = 3;  //作者名称
+	optional string authorDesc = 4;  //作者描述
+	optional string authorImg = 5;
+	optional int32 authorSex = 21;
+	optional string authorVideo = 6;
+	optional int32 authorType = 24;
+	optional int32 subNumber = 7;
+	optional string subName = 8;
+	optional string subDetailName = 9;
+	optional string cover = 16;
+	optional int32 collectCount = 10;
+	optional int32 commentCount = 11;
+	optional string desc = 12;
+	optional int32 isLocked = 17;
+	repeated string praiseImgs = 13;
+	repeated MNoteComment comments = 14;
+	optional string wantToSay = 18;
+	optional string experience = 19;
+	optional string suitable = 20;
+	optional string videoCover = 22;
+	repeated MQuestion list = 23; //列表
+	optional string shareUrl = 25;
+	optional int32 hasPraised = 26;
+	optional int32 hasCollect = 28;
+	optional string title = 27;
+	optional int32 browseCount = 29;
+	optional string authorImgList = 31;
+}
+
+message MNoteDetailList {
+	repeated MQuestion list = 1; //列表
+	optional string next = 2;
+}
+
+message MNoteDetail{
+  optional string id = 1;
+  optional string userid = 2;
+  optional string img = 3;  //ͼƬ
+  optional string remark = 4; //��ע
+  optional int32  type = 5; //1 Ӣ�� 2���� 3��ѧ 4רҵ��
+  optional string displayName = 6;  //ʵ�����
+  optional string subject = 7;  //��Ŀ
+  optional int32 isHighlight = 9;  //�Ƿ��Ϊ�ص�
+  optional string createTime = 12; //��Ŀ������ʱ��
+  optional int32 status = 17;
+}
+
+message MNoteComments {
+  repeated MNoteComment comments = 1;
+  optional string next = 2;
+}
+
+message MNoteComment {
+  optional string id = 1; 
+  optional string pid = 2;
+  optional string content = 5;
+  optional string userid = 6;
+  optional string nickname = 7;
+  optional string headimg = 8;
+  optional string time = 9;
+}
+
+message MSubjectList {
+	repeated MSubject subjects = 1; //列表
+	optional string next = 4;
+	optional string ad_url = 2;
+    optional string ad_title = 3;
+}
+
+message MSubject{
+    optional string id = 1;   //类别id
+    optional string title = 2;   //类别名称
+    repeated MSubjectDetail details = 3;
+    optional string next = 4;
+}
+
+message MSubjectDetail{
+	optional string id = 1;   //类别id
+    optional string title = 2;   //类别名称
+}
+
+message MMyCollectList{
+	repeated MMyCollect collects = 1;
+	optional string next = 2;
+}
+
+message MMyCollect{
+	optional string id = 1;
+	optional string title = 2;
+	optional string description = 3;
+	optional int32 type = 4;
+	optional string img = 5;
+	optional int32 count = 6;
+	optional string date = 7;
+	optional string url = 8;
+}

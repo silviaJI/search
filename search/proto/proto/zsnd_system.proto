@@ -1,0 +1,23 @@
+package com.mobile.api.proto;
+option java_outer_classname = "MSystem";
+
+message MRet {
+	optional int32 code = 1; //返回类型
+	optional string msg = 2; //返回值
+	optional bytes img = 3;
+}
+
+message MImg {
+	required bytes img = 1;
+}
+
+message MUnreadCount{
+    optional int32 essence = 1 ; //精华新消息数目
+    optional int32 square = 2; //广场新消息数目
+    optional int32 standby1 = 3; //备用1
+    optional int32 standby2 = 4; //备用2
+}
+
+message MRecomendKeys{
+    repeated string key = 1;
+}

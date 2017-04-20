@@ -1,0 +1,97 @@
+package com.mobile.api.proto;
+option java_outer_classname = "MAppEssence";
+
+message MEssenceList {
+	repeated MEssence essence = 1; //列表
+	optional string next = 2;
+	optional int32 hasCollect = 3;
+}
+
+message MEssenceAuthorListByDepart{
+	optional string ad_url = 2;
+    optional string ad_title = 3;
+    optional string ad_image = 4;
+    optional string next = 5;
+	repeated MEssenceAuthorByDepart notes = 1;
+}
+
+message MEssenceAuthorByDepart{
+	optional string title = 1;
+	optional string next = 3;
+	repeated MEssenceAuthor books  = 2;
+}
+
+message MEssenceAuthorList{
+	repeated MEssenceAuthor author = 1;
+	optional string next = 2;
+}
+
+message MEssence {
+	optional string id = 1; //id
+	optional string title = 2; //标题
+	optional string source = 3; //来源
+	optional string url = 9; //url
+	optional string content = 10;// 内容，有些可能不是url
+	optional int32 hasDownload = 4; //有没有附件下载
+	optional string resid= 5; //下载资源的id
+	optional int32 is_collected = 6; //是否收藏了
+	optional int32 is_downloaded = 7; //时间
+	optional int32 need_share = 8; //是否需要分享才可以下载
+	optional string time = 11; //时间
+	optional int32 type = 12;
+	optional int32 resType = 13;
+	optional string resSize = 14;
+	optional int32 browseTimes = 15;
+	optional int32 downloadTimes = 16;
+	optional int32 subjectType = 17;
+	optional string subjectName = 18;
+	repeated MEssenceMedia media = 19;
+	optional string shareUrl = 20;
+	optional int32 status = 21;
+	optional int32 browseCount = 22;
+	optional int32 isOver = 23;
+	optional int32 isLocked = 24;
+}
+
+message MEssenceSim{
+	optional string name = 1;
+	optional int32 color = 2;
+}
+
+message MEssenceAuthor{
+	optional string id = 1;
+	optional string name = 2;
+	optional string desc = 3;
+	optional string slogan = 4;
+	optional string cover = 5;
+	optional string areas = 6;
+	optional string belong = 7;
+	optional string collectCount = 8;
+	optional int32 subject = 9;
+	optional int32 hasCollect = 11;
+	optional string essencesStr = 12;
+	optional int32 type = 13;
+	optional string shareUrl = 14;
+	optional int32 newCount = 15;
+	optional int32 isLocked = 16;
+}
+
+message MEssenceMediaList{
+	repeated MEssenceMedia medias = 1;
+	optional string next = 2;
+}
+
+message MEssenceMedia{
+	optional string id = 1;
+	optional string name = 2;
+	optional string fileName = 3;
+	optional string filePath = 4;
+	optional string downloadUrl = 5;
+	optional int32 number = 6;
+	optional string url = 7;
+	optional int32 color = 8;
+	optional int32 type = 9;
+	optional int32 broseCount = 10;
+	optional string date = 11;
+	optional int32 fileSize = 12;
+}

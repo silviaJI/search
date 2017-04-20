@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.im.daoEx.AnswerDetailMapperEx" >
+  <resultMap id="BaseResultMap" type="com.im.dao.model.AnswerDetail" extends="com.im.dao.AnswerDetailMapper.BaseResultMap">
+  </resultMap>
+  
+<select id="getTotalScore" resultType="int" parameterType="map">
+select sum(score) from t_answer_detail where pid=#{pid}
+</select>
+</mapper>

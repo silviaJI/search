@@ -1,0 +1,85 @@
+package com.mobile.api.proto;
+option java_outer_classname = "MAppIndex";
+import "zsnd_news.proto";
+message MIndexList{
+    repeated MIndex index = 1;
+}
+
+message MIndex {
+	repeated MIndexPost post = 1; //推荐的精华帖子
+	repeated MMusic music = 2; //音乐
+	repeated MNews news = 16;  //新闻
+	optional string content = 3;  //励志的话
+	optional string img = 4; //背景图片
+	optional int32 days = 5; //天数
+	optional int32 daysLeft = 6; //剩余天数
+	optional string img_zj = 7;
+	optional string img_gn = 8;
+	optional string diary = 9;
+	optional string date = 10;
+	optional int32 reviewCount = 11;
+	optional int32 addCount = 12;
+	optional int32 signCount = 13;
+	optional string img_gn2 = 14;
+	optional int32 is_signed = 15;
+}
+
+message MMusic{
+    optional string title = 1;
+    optional string singer = 2;
+    optional string file = 3;
+}
+
+message MIndexPost {
+	optional string id = 1; //id
+	optional string title = 2; //
+	optional int32 hasDownload = 3;//
+	optional string url = 4; //
+}
+
+message MMdoule {
+	optional string id = 1; //id
+	optional string img = 2; //图
+	optional string name = 3; //名称
+	optional string desc = 4; //描述
+	optional string code = 5; //模块编号
+	optional int32  isRecommend = 6;  //是否推荐
+}
+
+message MUnread {
+	optional int32 module1 = 1; //南呱 未读数
+	optional int32 module2 = 2; //树洞 未读数
+	optional int32 module3 = 3; //订阅 未读数
+	optional int32 module4 = 4; //活动 未读数
+	optional int32 module5 = 5; //新闻 未读数
+	optional int32 module6 = 6; //预留1 未读数
+}
+
+message MDiaryList{
+    repeated MDiary diary = 1;
+}
+
+message MDiary{
+    optional string id = 1;
+    optional string userid = 3;
+    optional string date = 2;
+    optional string content = 4;
+}
+
+message MDateList{
+    repeated string date = 1;
+}
+
+/**
+@api MIndex MIndex	//首页 /mobile?methodno=MIndex&debug=1&deviceid=1&userid=fe34a40e-eac6-11e3-b696-ac853d9d52b1&verify=cf09a009-d221-466a-b9f0-d7d3b43dce7c&appid=nju&appid=nju
+@return MIndex
+*/
+
+/**
+@api MUnreadModule MUnreadModule	// 未读消息  /mobile?methodno=MUnreadModule&debug=1&deviceid=1&userid=dffeda04-eb07-11e3-b696-ac853d9d52b1&verify=753bd4cd-590a-4fa2-b5b3-f390d3bc1d01&appid=nju
+@return MUnread
+*/
+
+
+
+

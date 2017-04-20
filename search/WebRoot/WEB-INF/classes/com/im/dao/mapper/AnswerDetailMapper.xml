@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.im.dao.AnswerDetailMapper" >
+  <resultMap id="BaseResultMap" type="com.im.dao.model.AnswerDetail" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="pid" property="pid" jdbcType="INTEGER" />
+    <result column="quesion_id" property="quesionId" jdbcType="INTEGER" />
+    <result column="question_key" property="questionKey" jdbcType="VARCHAR" />
+    <result column="score" property="score" jdbcType="INTEGER" />
+    <result column="rank" property="rank" jdbcType="INTEGER" />
+    <result column="is_over" property="isOver" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="question_rank" property="questionRank" jdbcType="INTEGER" />
+    <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+    <result column="question_ans" property="questionAns" jdbcType="VARCHAR" />
+    <result column="is_check" property="isCheck" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, pid, quesion_id, question_key, score, rank, is_over, create_time, question_rank, 
+    modify_time, question_ans, is_check
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.im.dao.model.AnswerDetailExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_answer_detail
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_answer_detail
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_answer_detail
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.im.dao.model.AnswerDetailExample" >
+    delete from t_answer_detail
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.im.dao.model.AnswerDetail" >
+    <selectKey resultType="java.lang.String" keyProperty="id" order="BEFORE" >
+      SELECT UUID()
+    </selectKey>
+    insert into t_answer_detail (id, pid, quesion_id, 
+      question_key, score, rank, 
+      is_over, create_time, question_rank, 
+      modify_time, question_ans, is_check
+      )
+    values (#{id,jdbcType=VARCHAR}, #{pid,jdbcType=INTEGER}, #{quesionId,jdbcType=INTEGER}, 
+      #{questionKey,jdbcType=VARCHAR}, #{score,jdbcType=INTEGER}, #{rank,jdbcType=INTEGER}, 
+      #{isOver,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{questionRank,jdbcType=INTEGER}, 
+      #{modifyTime,jdbcType=TIMESTAMP}, #{questionAns,jdbcType=VARCHAR}, #{isCheck,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.im.dao.model.AnswerDetail" >
+    <selectKey resultType="java.lang.String" keyProperty="id" order="BEFORE" >
+      SELECT UUID()
+    </selectKey>
+    insert into t_answer_detail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      id,
+      <if test="pid != null" >
+        pid,
+      </if>
+      <if test="quesionId != null" >
+        quesion_id,
+      </if>
+      <if test="questionKey != null" >
+        question_key,
+      </if>
+      <if test="score != null" >
+        score,
+      </if>
+      <if test="rank != null" >
+        rank,
+      </if>
+      <if test="isOver != null" >
+        is_over,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="questionRank != null" >
+        question_rank,
+      </if>
+      <if test="modifyTime != null" >
+        modify_time,
+      </if>
+      <if test="questionAns != null" >
+        question_ans,
+      </if>
+      <if test="isCheck != null" >
+        is_check,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{id,jdbcType=VARCHAR},
+      <if test="pid != null" >
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="quesionId != null" >
+        #{quesionId,jdbcType=INTEGER},
+      </if>
+      <if test="questionKey != null" >
+        #{questionKey,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null" >
+        #{score,jdbcType=INTEGER},
+      </if>
+      <if test="rank != null" >
+        #{rank,jdbcType=INTEGER},
+      </if>
+      <if test="isOver != null" >
+        #{isOver,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="questionRank != null" >
+        #{questionRank,jdbcType=INTEGER},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="questionAns != null" >
+        #{questionAns,jdbcType=VARCHAR},
+      </if>
+      <if test="isCheck != null" >
+        #{isCheck,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.im.dao.model.AnswerDetailExample" resultType="java.lang.Integer" >
+    select count(*) from t_answer_detail
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update t_answer_detail
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pid != null" >
+        pid = #{record.pid,jdbcType=INTEGER},
+      </if>
+      <if test="record.quesionId != null" >
+        quesion_id = #{record.quesionId,jdbcType=INTEGER},
+      </if>
+      <if test="record.questionKey != null" >
+        question_key = #{record.questionKey,jdbcType=VARCHAR},
+      </if>
+      <if test="record.score != null" >
+        score = #{record.score,jdbcType=INTEGER},
+      </if>
+      <if test="record.rank != null" >
+        rank = #{record.rank,jdbcType=INTEGER},
+      </if>
+      <if test="record.isOver != null" >
+        is_over = #{record.isOver,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.questionRank != null" >
+        question_rank = #{record.questionRank,jdbcType=INTEGER},
+      </if>
+      <if test="record.modifyTime != null" >
+        modify_time = #{record.modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.questionAns != null" >
+        question_ans = #{record.questionAns,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isCheck != null" >
+        is_check = #{record.isCheck,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update t_answer_detail
+    set id = #{record.id,jdbcType=VARCHAR},
+      pid = #{record.pid,jdbcType=INTEGER},
+      quesion_id = #{record.quesionId,jdbcType=INTEGER},
+      question_key = #{record.questionKey,jdbcType=VARCHAR},
+      score = #{record.score,jdbcType=INTEGER},
+      rank = #{record.rank,jdbcType=INTEGER},
+      is_over = #{record.isOver,jdbcType=INTEGER},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      question_rank = #{record.questionRank,jdbcType=INTEGER},
+      modify_time = #{record.modifyTime,jdbcType=TIMESTAMP},
+      question_ans = #{record.questionAns,jdbcType=VARCHAR},
+      is_check = #{record.isCheck,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.im.dao.model.AnswerDetail" >
+    update t_answer_detail
+    <set >
+      <if test="pid != null" >
+        pid = #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="quesionId != null" >
+        quesion_id = #{quesionId,jdbcType=INTEGER},
+      </if>
+      <if test="questionKey != null" >
+        question_key = #{questionKey,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null" >
+        score = #{score,jdbcType=INTEGER},
+      </if>
+      <if test="rank != null" >
+        rank = #{rank,jdbcType=INTEGER},
+      </if>
+      <if test="isOver != null" >
+        is_over = #{isOver,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="questionRank != null" >
+        question_rank = #{questionRank,jdbcType=INTEGER},
+      </if>
+      <if test="modifyTime != null" >
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="questionAns != null" >
+        question_ans = #{questionAns,jdbcType=VARCHAR},
+      </if>
+      <if test="isCheck != null" >
+        is_check = #{isCheck,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.im.dao.model.AnswerDetail" >
+    update t_answer_detail
+    set pid = #{pid,jdbcType=INTEGER},
+      quesion_id = #{quesionId,jdbcType=INTEGER},
+      question_key = #{questionKey,jdbcType=VARCHAR},
+      score = #{score,jdbcType=INTEGER},
+      rank = #{rank,jdbcType=INTEGER},
+      is_over = #{isOver,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      question_rank = #{questionRank,jdbcType=INTEGER},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      question_ans = #{questionAns,jdbcType=VARCHAR},
+      is_check = #{isCheck,jdbcType=INTEGER}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

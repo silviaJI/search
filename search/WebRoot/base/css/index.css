@@ -1,0 +1,55 @@
+/*index*/
+#title{
+    font-size: 28px;
+    padding-top: 47px;
+    margin-bottom: 30px;
+    text-align: center;
+    font-weight: bold;
+    font-family: "ו";
+}
+
+#navbar{
+    width: 950px;
+    background-color: rgba(239,239,239,0.7);
+    margin: 0px auto;
+    border-radius: 10px;
+    box-shadow: 3px 3px 3px rgb(171,187,191);
+}
+#navbar a{
+    height: 40px;
+    width: 190px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 20px;
+    color: rgb(35,178,248);
+    display: block;
+    float: left;
+}
+#navbar a:hover{
+    color: white;
+}
+#photo{
+    width: auto;
+    height: auto;;
+}
+#photo img{
+    display: block;
+    margin: 3px auto;
+}
+
+#index-footer{
+    height: 50px;
+    margin: 45px auto;
+    
+    background-color: rgba(183,216,249,0.3);
+    color: white;
+    text-align: center;
+}
+
+
+#index-footer p{
+	
+    line-height:50px;
+    color: white;
+    font-size: 15px;
+}

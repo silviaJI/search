@@ -1,0 +1,42 @@
+package com.mobile.api.proto;
+option java_outer_classname = "MAppPost";
+
+message MPost {
+	optional string id = 1; 
+	optional string userid = 2; 
+	optional string title = 3;
+	optional string content = 4;
+	optional string lastTime = 5;
+	optional int32 commentCount = 6;
+	optional int32 praiseCount = 7;
+	optional string nickname = 8;
+	optional string headimg = 9;
+	optional string time = 10;
+	optional string isUnRead = 11;
+	optional int32 hasPraise = 12;
+	optional int32 sex = 13;
+	optional string sharedUrl = 14;
+}
+
+message MPosts {
+  repeated MPost list = 1;
+}
+
+message MPostComments {
+  repeated MPostComment comments = 1;
+}
+
+message MPostComment {
+  optional string id = 1; 
+  optional string pid = 2;
+  optional string replyid = 3;
+  optional string replyNickname = 4;
+  optional string content = 5;
+  optional string userid = 6;
+  optional string nickname = 7;
+  optional string headimg = 8;
+  optional string time = 9;
+  optional int32  isNew = 10;
+  optional string title = 11;
+  optional int32 sex = 12;
+}

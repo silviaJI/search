@@ -1,0 +1,108 @@
+/*这里定义所有和用户相关的样式  包括登录、注册*/
+#content-wrapper h2{font-size:23px; font-weight:bolder;color:#454d5a;padding:20px 0;}
+/*login*/
+/*登录*/
+
+#login_logo{
+    margin-top: 80px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+#login-content-wrapper{
+    background-color: rgba(255,255,255,0.5);
+    height: auto;
+    margin-bottom:25px;
+}
+.login-wrapper{
+    width: 320px;;
+    margin:25px auto;
+    text-align:center;
+}
+.login-wrapper div{}
+.login-wrapper .login-input{
+    height:35px;
+    line-height:35px;
+    width:250px;
+    border-bottom:3px solid #cccccc;
+    padding:0 6px;
+    background-color: rgba(255,255,255,0);
+    margin:0px;
+    font-size: 20px;
+    color: rgb(113,150,168);
+    outline: none;
+
+}
+.login-input-wrapper img{
+    vertical-align: middle;
+    margin-right: 15px;
+    margin-bottom: 5px;
+}
+.no-border-bottom{
+    border-bottom:none;
+}
+.no-border-top{
+    border-top:none;
+}
+/*.border-radius-top{border-top-left-radius:5px;border-top-right-radius:5px;}
+.border-radius-bottom{border-bottom-left-radius:5px;border-bottom-right-radius:5px;}
+*/
+.login-but-wrapper{
+    margin:15px 0;
+}
+
+.login-but-wrapper input{
+    width:270px;
+    height:40px;
+    background-color: rgb(113,150,168);
+    border-radius: 20px;
+    font-size: 23px;
+    word-spacing: 20px;
+    border:none;
+    color: white;
+    outline: none;
+}
+.login-tip-wrapper{
+    text-align:right;
+    width:100%;
+    color:#4b4b4b;
+}
+.login-tip-wrapper a{
+    color:#4b4b4b;
+    font-size:12px;
+}
+.login-input-wrapper{
+    margin:10px 0;
+}
+.login-input-wrapper input{
+    border: none;
+
+}
+.regist-tip,.regist-tip a{
+    font-size:17px;
+    color:#4b4b4b
+}
+.regist-tip a{
+    color:#454d5a;
+}
+/*注册*/
+/*注册头部*/
+.regist-info-wrapper{font-size:14px;padding:0 30px 40px 10%;color:#cccccc;}
+.regist-info-wrapper a{color:#454d5a;}
+.regist-info-wrapper h3{font-weight:bolder;font-size:20px;color:#454d5a;padding:15px 0;}
+/*注册的主体*/
+.regist-wrapper{width:100%;margin:30px auto;}
+.regist-wrapper .input-wrapper{height:30px;line-height:30px; margin:10px 0;width:100%;padding:2px 0 0 0;}
+.regist-wrapper .quick-login-wrapper{padding:0 0 10px 10%;}
+.regist-wrapper .quick-login-wrapper a{color:#cccccc;font-size:14px;position:relative;left:15px;}
+.regist-wrapper .input-wrapper .input-wrapper-info{width:20%;text-align:right;float:left;margin:0 15px 0 0;font-size:14px;color:#4b4b4b;}
+.regist-wrapper .input-wrapper .input-wrapper-input{width:240px;float:left;position:relative;}
+.regist-wrapper .input-wrapper .input-wrapper-input select{height:25px;line-height:25px;width:150px;}
+.regist-wrapper .input-wrapper .input-wrapper-tip{color:#4b4b4b;font-size:12px;float:left;background:#fff;width:320px;border-radius:3px;height:25px;line-height:25px;padding:0 0 0 15px;}
+.regist-wrapper .input-wrapper .regist-input{position:relative;z-index:1;height:25px;line-height:25px;width:205px;border:1px solid #cccccc;border-radius:2px;padding:0 3px;color:#4b4b4b;}
+.regist-wrapper .input-wrapper .search-bottom-input{position:absolute;}
+.regist-wrapper .input-wrapper-but{padding:10px 160px;}
+#school-input li{z-index:10000;}
+.z-index1{z-index:9000;}
+.z-index2{z-index:8000;}
+.z-index3{z-index:7000;}
+.z-index4{z-index:6000;}

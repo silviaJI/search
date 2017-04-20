@@ -1,0 +1,33 @@
+#status-wrapper,#rank-wrapper,#rank-warn{margin:10px 0 0 20px; width:100%;}
+#rank-warn{margin:20px 0 0 20px;font-size:20px;color:#4b4b4b}
+table th{background:#454d5a;}
+table.status,table.rank,#page-wrapper{margin:35px 0 0 0 ;width:90%;}
+table.status td,table.status th,table.rank td,table.rank th{border:1px solid #ccc;width:165px;height:34px;line-height:40px;text-align:center;font-size:15px;}
+table.status th,table.rank th{color:#ffffff;}
+table.status td,table.rank td{color:#4b4b4b;}
+table.status td a{color:#454d5a;}
+.score-wrapper,.time-wrapper,.question-wrappper{width:100%;padding:10px 30px;font-size:20px; color:#4b4b4b;}
+.time-wrapper{height:50px;margin:10px 0 0 0; font-size:25px;color:#4b4b4b; }
+/*问题情况*/
+.question-wrappper{}
+.question-option,.question-tip{padding:10px 0;}
+.question-tip{margin:0 0 20px 0;}
+.question-content-wrapper{padding:0 30px;}
+.question-content,.question-background{padding:10px 0; line-height:25px;}
+.question-content .content,.question-background .background{}
+.question-option input{height:15px; width:15px;vertical-align:top;}
+.question-option label{width:100%;float:left;padding:10px 0;}
+.question-option textarea{width:100%;border:1px solid #ccc;font:14px "Microsoft Yahei";color:#000;}
+.type-tip{color:#454d5a;}
+.button-wrapper{padding:0 60px;position:relative;}
+.button-wrapper .warn-info{color:#f00;font-size:15px;position:relative;left:50px;}
+/*答题须知*/
+#content-wrapper .tips-content{width:90%;margin:30px 0;font-size:15px;color:#4b4b4b;}
+.tips-content h2,.tips-button-wrapper{width:100%;text-align:center;}
+.tips-content h2{font-size:23px;font-weight:bold;margin:10px 0;}
+.tips-content h3{font-size:18px;line-height:30px;}
+.tips-content .red{color:#f00;}
+.tips-content p{line-height:30px;}
+/*分页有关*/
+#page-wrapper{margin:25px 0;}
+#page-wrapper a,#page-wrapper .now-page{font-size:15px;color:#ffffff;margin:0 7px;}

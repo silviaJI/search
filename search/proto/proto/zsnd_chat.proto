@@ -1,0 +1,107 @@
+package com.mobile.api.proto;
+option java_outer_classname = "MAppChat";
+
+message MInviteList{
+    repeated MInvite invites = 1;
+}
+
+message MInvite{
+    optional string id = 1;
+    optional string groupId = 2;
+    optional string groupName = 6;
+    optional string userid = 3;
+    optional string userName = 7;
+    optional string targetId = 4;
+    optional string targetName = 8;
+    optional string createTime = 5;
+}
+message MChatList {
+	repeated MChatIndex chat = 1; //聊天列表
+	optional int32 unreadCnt = 2; //未读会话数
+}
+
+message MChatIndex {
+	optional string id = 1; //id
+	optional string targetid = 2; //对象id
+	optional int32 targetHeadImg = 3; //对象头像
+	optional string userid = 4; //用户id
+	optional int32 headImg = 5; //用户头像
+	optional int32 hasNew = 6; //是否有新消息
+	optional string msg = 7; //内容
+	optional string time = 8; //时间
+	optional string topicid = 9; //话题id
+	optional string topicImg = 10; //话题图片
+	optional string topicContent = 11; //话题内容
+}
+
+message MChats {
+	repeated MChat chat = 1; //聊天列表
+	optional string targetid = 2; //对象id
+	optional int32 headImg = 3; //头像
+	optional string pushId = 4; //推送id
+}
+
+message MChat {
+	optional string id = 1; //id
+	optional string userid = 2; //用户id
+	optional string content = 3; //内容
+	optional string img = 4; //图片
+	optional string time = 5; //格式化时间
+	optional string createtime = 6; //原始时间
+	optional string size = 7; //width x height
+}
+
+message MView {
+	optional string userid = 1; //用户id
+	optional int32 headImg = 2; //头像编号
+	optional string targetid = 3; //用户id
+	optional int32 targetHeadImg = 4; //对象头像编号
+	optional string topicid = 5; //话题id
+}
+
+/**
+@api MChatIndex MChatIndex	// 南呱首页 /mobile?methodno=MChatIndex&debug=1&appid=nju&deviceid=1&userid=1&verify=1
+@return MChatList 
+*/
+
+/**
+@api MChat MChat	// 详情 /mobile?methodno=MChat&debug=1&appid=nju&deviceid=1&userid=1&verify=1&id=&begin=&topicid=
+@param required string id //聊天对象id
+@param required string topicid //话题id
+@param required string begin //起始时间
+@return MChats  
+*/
+
+/**
+@api MChatMsg MChatMsg	// 单条记录 /mobile?methodno=MChatMsg&debug=1&appid=nju&deviceid=1&userid=1&verify=1&id=
+@param required string id //聊天id
+@return MChat
+*/
+
+/**
+@api MAddChat MAddChat	// 添加聊天(MImg)  /mobile?methodno=MAddChat&debug=1&appid=nju&deviceid=1&userid=1&verify=1&id=&content=&topicid=
+@param required string id //聊天对象id
+@param required string topicid //话题id
+@param optional string content //文字
+@param optional MImg image
+@return MChat 
+*/
+
+/**
+@api MChatReq MChatReq	// 树洞发起会话 /mobile?methodno=MChatReq&debug=1&appid=nju&deviceid=1&userid=1&verify=1&targetid=&topicid=
+@param required string targetid //聊天对象id
+@param required string topicid //树洞id
+@return MView   
+*/
+
+/**
+@api MChatDel MChatDel	// 南呱记录删除  /mobile?methodno=MChatDel&debug=1&appid=nju&deviceid=1&userid=1&verify=1&viewid=
+@param required string viewid //会话id
+@return MRet 
+*/
+
+/**
+@api MChatBlack MChatBlack	// 南呱黑名单 /mobile?methodno=MChatBlack&debug=1&appid=nju&deviceid=1&userid=1&verify=1&viewid=
+@param required string viewid //会话id
+@return MRet 
+*/

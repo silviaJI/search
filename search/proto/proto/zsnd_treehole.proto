@@ -1,0 +1,152 @@
+package com.mobile.api.proto;
+option java_outer_classname = "MAppTreeHole";
+
+message MTreeHole {
+	repeated MTopic topics = 1; //列表
+}
+
+message MTopic {
+	optional string id = 1; //id
+	optional string tagid = 2; //tagid
+	optional string tag = 3; //tag
+	optional string content = 4; //内容
+	optional string time = 5; //时间
+	optional string img = 6; //图
+	optional int32 praiseCnt = 7; //赞总数
+	optional int32 commentCnt = 8; //评论总数
+	optional int32 hasPraise = 9; //是否已经赞
+	optional int32 isHot = 10; //置顶
+	optional int32 isTop = 11; //热门
+	optional string author = 12; //树洞作者
+	optional string createTime = 13; //创建时间
+}
+
+message MTag {
+	optional string id = 1; //id
+	optional string title = 2; //标题
+}
+
+message MTagList {
+	repeated MTag tags = 1; //列表
+}
+
+message MComment {
+	optional string id = 1; //id
+	optional int32 floor = 2; //楼层
+	optional string userid = 3; //回帖人id
+	optional int32 replyFloor = 4; //被回复人楼层
+	optional string replyid = 5; //被回复人id
+	optional string content = 6; //内容
+	optional string time = 7; //时间
+	optional int32 isLz = 8; //是否显示为楼主(必须是发帖人且为1)
+	optional string createTime = 9; //创建时间
+}
+
+message MCommentList {
+	repeated MComment comments = 1; //列表
+}
+
+message MAddTopic {
+	optional string tagId = 1; //tagid
+	optional string content = 2; //内容
+	optional bytes img = 3;//图
+}
+
+message MMsgCount {
+	optional int32 comment = 1; //评论
+	optional int32 chat = 2; //私信
+}
+
+message MTopicMini {
+	optional string id = 1; //id
+	optional string tag = 2; //tag
+	optional string content = 3; //内容
+	optional int32 unreadCnt = 4; //未读数
+	optional string createTime = 5; //创建时间
+}
+
+message MTopicMiniList {
+	repeated MTopicMini topics = 1; //列表
+}
+
+/**
+@api MGetTags MGetTags	// 获取所有话题(前三个首页显示) /mobile?methodno=MGetTags&debug=1&deviceid=1&appid=1&userid=1&verify=1
+@return MTagList
+*/
+
+/**
+@api MTreeHoleList MTreeHoleList	// 树洞首页 /mobile?methodno=MTreeHoleList&debug=1&deviceid=1&appid=1&userid=1&verify=1&begin=
+@param required number type //1:置顶+热门 2:按时间倒序分页
+@param optional string begin //开始时间
+@return MTreeHole 
+*/
+
+/**
+@api MTreeHoleQuery MTreeHoleQuery	// 树洞查询 /mobile?methodno=MTreeHoleQuery&debug=1&deviceid=1&appid=1&userid=1&verify=1&type=
+@param required number type //1:推荐 2:热门
+@return MTreeHole 
+*/
+
+/**
+@api MTagTreeHole MTagTreeHole	// 话题树洞 /mobile?methodno=MTagTreeHole&debug=1&deviceid=1&appid=1&userid=1&verify=1&tagid=&begin=
+@param required string tagid //话题id
+@param optional string begin //开始时间
+@return MTreeHole 
+*/
+
+/**
+@api MTreeHole MTreeHole	// 树洞详情 /mobile?methodno=MTreeHole&debug=1&deviceid=1&appid=1&userid=1&verify=1&id=1
+@param required string id //话题id
+@return MTopic
+*/
+
+/**
+@api MTreeHoleComments MTreeHoleComments	// 树洞评论 /mobile?methodno=MTreeHoleComments&debug=1&deviceid=1&appid=1&userid=1&verify=1&id=1&begin=
+@param required string id //话题id
+@param optional string begin //开始时间
+@return MCommentList
+*/
+
+/**
+@api MGetMsgCount MGetMsgCount	// 获取消息数 /mobile?methodno=MGetMsgCount&debug=1&deviceid=1&appid=1&userid=1&verify=1
+@return MMsgCount
+*/
+
+/**
+@api MPraise MPraise	// 树洞赞 /mobile?methodno=MPraise&debug=1&deviceid=1&appid=1&userid=1&verify=1&id=1&type=1
+@param required string id //话题id
+@param required number type //1:赞 2:取消赞
+@return MRet 
+*/
+
+/**
+@api MAddTreeHole MAddTreeHole	// 发布树洞:MAddTopic   /mobile?methodno=MAddTreeHole&debug=1&deviceid=1&userid=1&verify=1
+@param required MAddTopic topic
+@return MRet 
+*/
+
+/**
+@api MTreeHoleDel MTreeHoleDel	// 树洞删除 /mobile?methodno=MTreeHoleDel&debug=1&deviceid=1&appid=1&userid=1&verify=1&id=1
+@param required string id //话题id
+@return MRet 
+*/
+
+/**
+@api MTreeHoleReport MTreeHoleReport	// 树洞举报 /mobile?methodno=MTreeHoleReport&debug=1&deviceid=1&appid=1&userid=1&verify=1&id=1
+@param required string id //话题id
+@return MRet 
+*/
+
+/**
+@api MTreeHoleComment MTreeHoleComment	// 发布树洞评论 /mobile?methodno=MTreeHoleComment&debug=1&deviceid=1&appid=1&userid=1&verify=1&id=&content=&reply=&floor=
+@param required string id //话题id
+@param required string content //内容
+@param optional string reply //被回复人id
+@param optional number floor //被回复人楼层
+@return MRet 
+*/
+
+/**
+@api MTreeHoleNewComment MTreeHoleNewComment	// 树洞新的评论 /mobile?methodno=MTreeHoleNewComment&debug=1&deviceid=1&appid=1&userid=1&verify=1
+@return MTopicMiniList 
+*/

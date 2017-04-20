@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.im.daoEx.QuestionMapperEx" >
+  <resultMap id="BaseResultMap" type="com.im.dao.model.Question" extends="com.im.dao.QuestionMapper.BaseResultMap">
+  </resultMap>
+  
+<select id="selectForRoundOne" resultMap="BaseResultMap" parameterType="map">
+(
+select * from t_question where rank = 1
+<if test="list!=null">
+and id NOT IN (${list})
+</if>
+order by rand() limit 6
+)
+UNION ALL
+(
+select * from t_question where rank = 2
+<if test="list!=null">
+and id NOT IN (${list})
+</if>
+order by rand() limit 4
+)
+UNION ALL
+(
+select * from t_question where rank = 3
+<if test="list!=null">
+and id NOT IN (${list})
+</if>
+order by rand() limit 3
+)
+UNION ALL
+(select * from t_question where rank = 4
+<if test="list!=null">
+and id NOT IN (${list})
+</if>
+order by rand() limit 2
+)
+</select>
+
+<select id="selectByAreaAndRank" resultMap="BaseResultMap" parameterType="map">
+select * from t_question where rank = #{rank} and area=#{area}
+<if test="list!=null">
+and id NOT IN (${list})
+</if>
+order by rand() limit 1
+</select>
+
+<select id="selectForRoundTwo" resultMap="BaseResultMap" parameterType="com.im.dao.model.Question">
+(
+select * from t_question where rank = 2
+<if test="list!=null">
+and id NOT IN (${list})
+</if>
+order by rand() limit 2
+)
+UNION ALL
+(
+select * from t_question where rank = 3
+<if test="list!=null">
+and id NOT IN (${list})
+</if>
+order by rand() limit 1
+)
+UNION ALL
+(
+select * from t_question where rank = 4
+<if test="list!=null">
+and id NOT IN (${list})
+</if>
+order by rand() limit 2
+)
+UNION ALL
+(
+select * from t_question where rank = 5
+<if test="list!=null">
+and id NOT IN (${list})
+</if>
+order by rand() limit 1
+)
+</select>
+
+</mapper>

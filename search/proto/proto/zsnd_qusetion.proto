@@ -1,0 +1,43 @@
+package com.mobile.api.proto;
+option java_outer_classname = "MAppQuestion";
+
+message MQuestions {
+  repeated MQuestion list = 1;
+}
+
+message MQuestion {
+  optional string id = 1;
+  optional string userid = 2;
+  optional string img = 3;  //ͼƬ
+  optional string remark = 4; //��ע
+  optional int32  type = 5; //1 Ӣ�� 2���� 3��ѧ 4רҵ��
+  optional string displayName = 6;  //ʵ�����
+  optional string subject = 7;  //��Ŀ
+  optional int32 isAd = 8;  //�Ƿ�Ϊ���
+  optional int32 isHighlight = 9;  //�Ƿ��Ϊ�ص�
+  optional int32 isRecommend = 10;  //�Ƿ���Ƽ������
+  optional string lastTime = 11; //���ϰʱ��
+  optional string createTime = 12; //��Ŀ������ʱ��
+  optional string url = 13; //���
+  optional int32  hasLearned = 14;  //�Ƿ�������
+  optional int32  reviewCount = 15; //��ϰ����
+  optional string title = 16;
+  optional int32 status = 17;
+  optional string shareUrl = 18;
+}
+
+
+message MQuestionCount {
+  optional int32 totoalCount = 1;
+  optional int32 engCount = 2;
+  optional int32 polityCount = 3;
+  optional int32 mathCount = 4;
+  optional int32 major1Count = 5;
+  optional int32 major2Count = 6;
+  optional int32 engAddedCount = 7;
+  optional int32 polityAddedCount = 8;
+  optional int32 mathAddedCount = 9;
+  optional int32 major1AddedCount = 10;
+  optional int32 major2AddedCount = 11;
+  
+}

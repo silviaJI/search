@@ -1,0 +1,35 @@
+package com.mobile.api.proto;
+option java_outer_classname = "MLost";
+
+message MLostAndFoundList {
+	repeated MLostAndFound lf = 1; //列表
+}
+
+message MLostAndFound {
+	optional string id = 1; //id
+	optional string address = 2; //地点
+	optional string desc = 3; //描述
+	optional string userid = 4; //用户id
+	optional string nickname = 5; //昵称
+	optional string contact = 6; //联系方式
+	optional string time = 7; //时间
+	repeated string img = 8; //组图
+}
+
+message MAddLostOrFound {
+	optional int32 type = 1; //1：捡到 2：丢失
+	optional string address = 2; //地点
+	optional string desc = 3; //描述
+	optional string contact = 4; //联系方式
+	optional string time = 5; //时间
+	optional bytes img1 = 6;
+	optional bytes img2 = 7;
+	optional bytes img3 = 8;
+	optional bytes img4 = 9;
+}
+
+/**
+@api MLostAndFound MLostAndFound	// 失物招领(分页) /mobile?methodno=MLostAndFound&debug=1&deviceid=1&userid=&verify=&type=&page=&limit=
+@param required number type //1：捡到 2：丢失
+@return MLostAndFoundList   
+*/

@@ -1,0 +1,306 @@
+package com.mobile.api.proto;
+option java_outer_classname = "MSystem";
+
+message MRet {
+	optional int32 code = 1; //返回类型
+	optional string msg = 2; //返回值
+	optional bytes img = 3;
+}
+
+message MImg {
+	required bytes img = 1;
+}
+
+message MRoomList {
+	repeated MRoom room = 1; //空教室列表
+}
+
+message MRoom {
+	optional string name = 1; //名称
+	repeated string num = 2; //房间
+}
+
+message MClassList {
+	optional int32 week = 1; //周数
+	repeated MClass class = 2; //课程列表
+	optional bytes img = 3; //验证码 若存在则需要填写完验证码再重新登录
+}
+
+message MClass {
+	optional string name = 1; //名称
+	optional string teacher = 2; //教师
+	optional string address = 3; //地点
+	optional string week = 4; //周数
+	optional int32 day = 5; //星期
+	optional int32 begin = 6; //开始
+	optional int32 end = 7; //结束
+	optional string time = 8; //时间
+}
+
+message MCourseList {
+	repeated MCourse course = 1; //成绩列表
+	optional bytes img = 2; //验证码 若存在则需要填写完验证码再重新登录
+}
+
+message MCourse {
+	optional string name = 1; //名称
+	optional int32 type = 2; //类型 1核心、2平台、3通修
+	optional string grade = 3; //分数
+	optional string point = 4; //分值
+}
+
+message MTermList {
+	repeated MTerm term = 1; //学期列表
+	optional bytes img = 2; //验证码 若存在则需要填写完验证码再重新登录
+}
+
+message MTerm {
+	optional string name = 1; //名称
+	optional string url = 2; //url
+}
+
+message MCardList {
+	repeated MCard card = 1; //一卡通记录列表
+	optional bytes img = 2; //验证码 若存在则需要填写完验证码再重新登录
+}
+
+message MCard {
+	optional string name = 1; //名称
+	optional string total = 2; //余额
+	optional string cost = 3; //消费
+	optional string time = 4; //时间
+}
+
+message MContactList {
+	repeated MContacts list = 1;
+}
+
+message MContacts {
+	optional string name = 1; //名称
+	repeated MContact Contact = 2; //电话
+}
+
+message MContact {
+	optional string name = 1; //名称
+	optional string desc = 2; //描述
+	repeated string phone = 3; //电话
+}
+
+message MBusList {
+	repeated MBus bus = 1; //校车表
+}
+
+message MBus {
+	optional string name = 1; //终点
+	optional string begin = 2; //发车点
+	optional string info = 3; //备注
+	optional int32 count = 4; //数量
+	optional string process = 5; //途经
+}
+
+message MSignInList {
+	optional string name = 1; //姓名
+	optional int32 count = 2; //次数
+	repeated MSignIn bus = 3; //打卡记录表
+}
+
+message MSignIn {
+	optional string time = 1; //时间
+	optional string begin = 2; //开始时间
+	optional string end = 3; //结束时间
+}
+
+/**
+@api MPushClear MPushClear	//清空推送   /mobile?methodno=MPushClear&debug=1&deviceid=&appid=&userid=
+@return MRet
+*/
+
+/**
+@api MLogout MLogout	//退出登录   /mobile?methodno=MLogout&debug=1&deviceid=&appid=&userid=
+@return MRet
+*/
+
+/**
+@api MGetWelcomePage MGetWelcomePage	//获取欢迎页   /mobile?methodno=MGetWelcomePage&debug=&deviceid=&appid=
+@return MRet
+*/
+
+/**
+@api MGetMobileVerify MGetMobileVerify	//获取手机验证码 /mobile?methodno=MGetMobileVerify&debug=1&deviceid=1&phone=&appid=
+@param required string phone //手机号
+@return MRet
+*/
+
+/**
+@api MVerifyMobile MVerifyMobile	//验证手机号 /mobile?methodno=MVerifyMobile&debug=1&deviceid=1&phone=&appid=&code=
+@param required string phone //手机号
+@param required string code //验证码
+@return MRet
+*/
+
+/**
+@api MUpdateHeadImg MUpdateHeadImg	//修改头像:MImg   /mobile?methodno=UpdateHeadImg&debug=1&deviceid=1&userid=&verify=&appid=
+@return MRet
+*/
+
+/**
+@api MVerifyUser MVerifyUser	//用户身份认证 /mobile?methodno=MVerifyUser&debug=1&deviceid=1&userid=&verify=&num=&pwd=&code=&appid=nju
+@param required string num //学号
+@param required string pwd //密码
+@param optional string code //验证码
+@return MRet
+*/
+
+/**
+@api MRss MRss	// 订阅 /mobile?methodno=MRss&debug=1&deviceid=1&userid=&verify=&rssid=&appid=
+@param required string rssid //id
+@return MRet
+*/
+
+/**
+@api MPraise MPraise	// 树洞赞 /mobile?methodno=MPraise&debug=1&deviceid=1&appid=1&userid=1&verify=1&id=1&type=1
+@param required string id //话题id
+@param required number type //1:赞 2:取消赞
+@return MRet 
+*/
+
+/**
+@api MAddTreeHole MAddTreeHole	// 发布树洞:MAddTopic     /mobile?methodno=MAddTreeHole&debug=1&deviceid=1&userid=1&verify=1
+@return MRet 
+*/
+
+/**
+@api MTreeHoleDel MTreeHoleDel	// 树洞删除 /mobile?methodno=MTreeHoleDel&debug=1&deviceid=1&appid=1&userid=1&verify=1&id=1
+@param required string id //话题id
+@return MRet 
+*/
+
+/**
+@api MTreeHoleComment MTreeHoleComment	// 发布树洞评论 /mobile?methodno=MTreeHoleComment&debug=1&deviceid=1&appid=1&userid=1&verify=1&id=&content=&reply=&commentId=
+@param required string id //话题id
+@param required string content //内容
+@param optional string reply //被回复人id
+@param optional string commentId //评论id
+@return MRet 
+*/
+
+/**
+@api MChatDel MChatDel	// 南呱记录删除  /mobile?methodno=MChatDel&debug=1&appid=nju&deviceid=1&userid=1&verify=1&id=
+@param required string id //聊天对象id
+@return MRet 
+*/
+
+/**
+@api MChatBlack MChatBlack	// 南呱黑名单 /mobile?methodno=MChatBlack&debug=1&appid=nju&deviceid=1&userid=1&verify=1&id=
+@param required string id //聊天对象id
+@return MRet 
+*/
+
+/**
+@api MChatChange MChatChange	// 南呱换人 /mobile?methodno=MChatChange&debug=1&appid=nju&deviceid=1&userid=1&verify=1&id=
+@param required string id //聊天对象id
+@return MRet 
+*/
+
+/**
+@api MChatCall MChatCall	// 南呱呼叫  /mobile?methodno=MChatCall&debug=1&appid=nju&deviceid=1&userid=1&verify=1&id=
+@param required string id //聊天对象id
+@return MRet 
+*/
+
+/**
+@api MChatCallBack MChatCallBack	// 南呱呼叫应答 /mobile?methodno=MChatCallBack&debug=1&appid=nju&deviceid=1&userid=1&verify=1&id=&type=
+@param required string id //聊天对象id
+@param required number type //0:取消 1:接受
+@return MRet 
+*/
+
+/**
+@api MBookRenew MBookRenew	// 图书馆续借  mobile?methodno=MBookRenew&debug=&deviceid=&appid=1&userid=&verify=&account=&password=&id=
+@param required string id //图书id
+@param required string account //account
+@param required string password //password
+@return MRet  
+*/
+
+/**
+@api MRoomSearch MRoomSearch	// 空教室搜索 /mobile?methodno=MRoomSearch&debug=1&deviceid=1&userid=&verify=&type=&day=&begin=&end=
+@param required number type //1:仙1   2:仙2     3:逸夫楼
+@param required number day //1~7
+@param required number begin //1~10
+@param required number end //1~10
+@return MRoomList   
+*/
+
+/**
+@api MAddLostAndFound MAddLostAndFound	// 添加失物招领:MAddLostOrFound /mobile?methodno=MAddLostAndFound&debug=&appid=&deviceid=&userid=&verify=
+@return MRet    
+*/
+
+
+/**
+@api MSchedule MSchedule	// 课程表 /mobile?methodno=MSchedule&debug=1&deviceid=1&account=&password=&code=
+@param required string code //第一次登录时不需要，如果有验证码，则第二次请求时必须
+@param required string account //account
+@param required string password //password
+@return MClassList     
+*/
+
+/**
+@api MTermList MTermList	// 获取学期列表  /mobile?methodno=MTermList&debug=1&deviceid=1&userid=&verify=&account=&password=
+@param required string code //第一次登录时不需要，如果有验证码，则第二次请求时必须
+@param required string account //account
+@param required string password //password
+@return MTermList
+*/
+
+/**
+@api MGradeSearch MGradeSearch	//成绩查询  /mobile?methodno=MGradeSearch&debug=1&deviceid=1&userid=&verify=&account=&password=&url=
+@param required string url //url
+@return MCourseList     
+*/
+
+/**
+@api MCardInfo MCardInfo	// 一卡通余额 /mobile?methodno=MCardInfo&debug=1&deviceid=1&userid=&verify=&account=&password=
+@param required string code //第一次登录时不需要，如果有验证码，则第二次请求时必须
+@param required string account //account
+@param required string password //password
+@return MCard     
+*/
+
+/**
+@api MCardHistory MCardHistory	// 一卡通消费记录  /mobile?methodno=MCardHistory&debug=1&deviceid=1&userid=&verify=&begin=&end=&account=&password=
+@param required string begin //起始
+@param required string end //结束
+@return MCardList     
+*/
+
+/**
+@api MContacts MContacts	// 部门电话 /mobile?methodno=MContacts&debug=1&deviceid=1&userid=&verify=
+@return MContactList      
+*/
+
+/**
+@api MBusSearch MBusSearch	// 校车 /mobile?methodno=MBusSearch&debug=1&deviceid=1&userid=&verify=&type=&page=&limit=
+@param required number type //1:鼓楼2:仙林
+@return MBusList      
+*/
+
+/**
+@api MSignInInfo MSignInInfo	// 打卡信息 /mobile?methodno=MSignInInfo&debug=1&deviceid=1&userid=&verify=&account=&password=
+@param required string account //account
+@param required string password //password
+@return MSignInList        
+*/
+
+/**
+@api MSignInInDetail MSignInInDetail	// 打卡详情 /mobile?methodno= MSignInInDetail&debug=1&deviceid=1&userid=&verify=&account=&password=
+@param required string account //account
+@param required string password //password
+@return MSignInList        
+*/
+
+/**
+@api MHelp MHelp	// 办理流程(分页) /mobile?methodno=MHelp&debug=1&deviceid=1&userid=&verify=&page=&limit=
+@return MContacts       
+*/

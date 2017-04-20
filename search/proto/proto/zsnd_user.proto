@@ -1,0 +1,103 @@
+package com.mobile.api.proto;
+option java_outer_classname = "MAppUser";
+message MUserList{
+    repeated MUser user = 1; //用户
+}
+
+message MUser {
+	optional string id = 1;	   //id
+	optional string account = 2;  //账号(自动分配)
+	optional string headImg = 3;  //头像
+	optional string nickname = 4;  //昵称
+	optional string verify = 5;  //登陆校验码
+	optional int32 sex = 6;  //0:女 1:男 2:未知 
+	optional string email = 7;  //生日
+	optional string phone = 8;  //手机号
+	optional int32 isV = 9;  //是否是VIP
+	optional int32 restDay = 10; //剩余天数
+	optional int32 startDay = 11; //开始天数
+	optional string subjectEng = 12;
+	optional string subjectPolity = 13;
+	optional string subjectMath = 14;
+	optional string subjectMajor1 = 15;
+	optional string subjectMajor2 = 16;
+	optional int32 hasPassword = 17;
+	optional string diaryDefault = 18;
+	optional string contactUrl = 19;
+	optional string aboutusUrl = 20;
+	optional string create_time = 21;
+	optional string password = 22;  //密码，明文，一台设备只有第一次进入的时候才会返回，第一次进入APP时返回
+	optional string passwordEncrypt = 23;  //密码，密文
+}
+
+message Mupdateself {
+	optional string id = 1;	   //id
+	optional string version = 2; //version
+	optional string url = 3;  //url
+	optional string desc = 4; //介绍
+}
+
+/**
+@api MLogin MLogin	//登录 /mobile?methodno=MLogin&debug=1&phone=&password=&deviceid=&appid=&device=
+@param required string phone //手机号
+@param required string password //密码(需要加密)
+@param required string device //设备类型  android或ios
+@return MUser
+*/
+
+/**
+@api MRegist MRegist	//注册或忘记密码 /mobile?methodno=MRegist&debug=1&deviceid=1&phone=&password=&nickname=&code=&appid=&device=
+@param required string phone //手机号
+@param required string password //密码(需要加密)
+@param required string nickname //昵称
+@param required string code //短信验证码
+@param required string device //设备类型  android或ios
+@return MUser
+*/
+
+/**
+@api MChangePhone MChangePhone	//修改账号或密码 /mobile?methodno=MChangePhone&debug=1&deviceid=1&phone=&password=&nickname=&code=&appid=
+@param required string phone //手机号
+@param required string password //密码(需要加密)
+@param required string nickname //昵称
+@param required string code //短信验证码
+@return MUser
+*/
+
+/**
+@api MGetUserInfo MGetUserInfo	//用户详细信息 /mobile?methodno=MGetUserInfo&debug=1&deviceid=1&userid=88b9e9a9-ea31-11e3-b696-ac853d9d52b1&verify=&appid=nju
+@return MUser
+*/
+
+/**
+@api MUpdateUserInfo MUpdateUserInfo	//用户信息修改 /mobile?methodno=MUpdateUserInfo&debug=1&appid=nju&deviceid=1&userid=&verify=&nickname=&belong=&sex=&birthday=tags=
+@param required string nickname //昵称
+@param required string belong //院系
+@param required number sex //0:女 1:男
+@param required string birthday //生日
+@param optional string tags //标签(逗号分隔)
+@return MUser
+*/
+
+/**
+@api MLogout MLogout	//退出登录   /mobile?methodno=MLogout&debug=1&deviceid=&appid=&userid=
+@return MRet
+*/
+
+/**
+@api MGetMobileVerify MGetMobileVerify	//获取手机验证码 /mobile?methodno=MGetMobileVerify&debug=1&deviceid=1&phone=&appid=
+@param required string phone //手机号
+@return MRet
+*/
+
+/**
+@api MVerifyMobile MVerifyMobile	//验证手机号 /mobile?methodno=MVerifyMobile&debug=1&deviceid=1&phone=&appid=&code=
+@param required string phone //手机号
+@param required string code //验证码
+@return MRet
+*/
+
+/**
+@api MUpdateHeadImg MUpdateHeadImg	//修改头像:MImg   /mobile?methodno=UpdateHeadImg&debug=1&deviceid=1&userid=&verify=&appid=
+@return MRet
+*/

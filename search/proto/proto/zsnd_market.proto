@@ -1,0 +1,63 @@
+package com.mobile.api.proto;
+option java_outer_classname = "MAppMarket";
+
+message MMarketList {
+	repeated MMarket market = 1; //列表
+}
+
+message MMarket {
+	optional string id = 1; //id
+	optional string userid = 2;  //用户id
+	optional string name = 3;  //商品名称
+	optional string priceOriginal = 4;   //商品原价
+	optional string price = 5;   //商品售价
+	optional string description = 6;  //商品描述
+	optional string phone = 7;    //phone联系方式
+	optional string qq = 8;    //qq联系方式
+	optional string address = 9;   //交易地点
+	optional string time = 10; //发布时间
+	optional int32  isSold= 11;   //是否已售
+	optional string type = 12;   //类型
+	optional string imgs = 13; //组图
+}
+
+message MAddMarket {
+	optional string name = 1;  //商品名称
+	optional string priceOriginal = 2;   //商品原价
+	optional string price = 3;   //商品售价
+	optional string description = 4;  //商品描述
+	optional string phone = 5;    //phone联系方式
+	optional string qq = 6;    //qq联系方式
+	optional string address = 7;   //交易地点
+	optional string type = 8;   //类型
+	repeated bytes imgs = 9;  //组图
+}
+
+message MMarketTypeList {
+	repeated MMarketType market = 1; //列表
+}
+
+message MMarketType{
+    optional string id = 1;   //类别id
+    optional string title = 2;   //类别名称
+}
+/**
+@api MMarketList	// 跳蚤市场列表(分页) /mobile?methodno=MMarketList&debug=1&deviceid=1&userid=&verify=&type=&page=&limit=
+@param required number type //0：全部跳蚤市场    1：我的跳蚤市场    默认为0,我的跳蚤市场虽然没有，但也预留一下
+@param required number sold //0:全部列表    1：未售列表   2：已售列表
+@return MMarketList   
+*/
+
+/**
+@api MAddMarket	//发布一个商品    /mobile?methodno=MAddMarket&debug=1&deviceid=1&userid=&verify=
+@param required MAddMarket market
+@return MMarketList   
+*/
+
+/**
+@api MSoldMarket	//点击商品已售    /mobile?methodno=MSoldMarket&debug=1&deviceid=1&userid=&verify=&id=
+@param required string id   //商品的id
+@return MRet
+*/
+
+
